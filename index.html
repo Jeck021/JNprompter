@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JN prompter - Neural Architecture Suite">
+  <meta name="theme-color" content="#020617">
   <title>JN prompter - Neural Architecture Suite</title>
-  <!-- CDNs for Standalone Deployment -->
+  <!-- CDNs for Standalone Deployment (Ready for Vercel, Netlify, GitHub Pages) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Load React FIRST -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -173,7 +175,7 @@
       </svg>
     );
 
-    const apiKey = ""; 
+    const apiKey = ""; // PASTE YOUR GEMINI API KEY HERE FOR GITHUB/VERCEL/NETLIFY DEPLOYMENT
 
     const STYLES = {
       corona: { name: "Corona Renderer", promptSuffix: "Mimic Chaos Corona 11 Engine: Use unbiased path tracing, photorealistic lightmix, soft shadows, 8k raw photography." },
@@ -425,7 +427,7 @@
       const generatePrompt = async () => {
         ps.confirm();
         if (!selectedImage) { setStatus("Upload model screenshot first!"); return; }
-        setIsRefining(true); setStatus("? Generating Prompt: Analyzing Neural Metadata...");
+        setIsRefining(true); setStatus("✨ Generating Prompt: Analyzing Neural Metadata...");
         try {
           const systemPrompt = `You are a neural architect. Analyze geometry. Suggest hyper-realistic prompt for ${STYLES[activeStyle].name}. IMPORTANT: Always include strict instructions to maintain the exact building geometry from the reference image. Output ONLY prompt text.`;
           const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
@@ -476,7 +478,7 @@
             document.execCommand('copy');
             document.body.removeChild(el);
 
-            setStatus("? Prompt Generated & Copied! Launching AI Hub..."); 
+            setStatus("✨ Prompt Generated & Copied! Launching AI Hub..."); 
             setTimeout(() => setLauncherOpen(true), 800);
           }
         } catch (error) { setStatus("Calibration failed."); } finally { setIsRefining(false); }
@@ -490,7 +492,7 @@
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
-        setStatus("? Copied to Clipboard! Ready for AI Launcher.");
+        setStatus("✨ Copied to Clipboard! Ready for AI Launcher.");
         setTimeout(() => setStatus(""), 4000);
       };
 
@@ -516,7 +518,7 @@
         if (!editImg1) { setStatus("Upload Image to Edit first!"); return; }
         if (!editPrompt) { setStatus("Enter modification prompt!"); return; }
         setIsEditing(true);
-        setStatus("? AI Editor modifying image...");
+        setStatus("✨ AI Editor modifying image...");
         try {
           const parts = [
             { text: "INSTRUCTION: Modify the primary image based on this prompt: " + editPrompt },
@@ -541,7 +543,7 @@
           if (base64) {
             const finalImg = `data:image/png;base64,${base64}`;
             setEditResult(finalImg);
-            setStatus("? Image Edit Complete!");
+            setStatus("✨ Image Edit Complete!");
             setTimeout(() => setStatus(""), 4000);
           } else {
             setStatus("Failed to generate image edit.");
