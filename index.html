@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="JN prompter - Neural Architecture Suite">
+  <meta name="theme-color" content="#020617">
+  <link rel="icon" href="data:,"> <!-- Prevents favicon 404 errors on static hosts -->
   <title>JN prompter - Neural Architecture Suite</title>
-  <!-- CDNs for Standalone Deployment -->
+  
+  <!-- CDNs for Standalone Deployment (Ready for Vercel, Netlify, GitHub Pages) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Load React FIRST -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -13,6 +17,7 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <!-- Load Core Lucide library -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  
   <style>
     .custom-scrollbar::-webkit-scrollbar {
       width: 4px;
@@ -173,6 +178,11 @@
       </svg>
     );
 
+    // ==========================================
+    // DEPLOYMENT INSTRUCTION:
+    // PASTE YOUR GEMINI API KEY IN THE QUOTES BELOW 
+    // BEFORE DEPLOYING TO GITHUB/VERCEL/NETLIFY
+    // ==========================================
     const apiKey = ""; 
 
     const STYLES = {
